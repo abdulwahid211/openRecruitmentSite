@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  db:
+    container_name: 'db_mysql'
+    image: mysql:8.0
+    restart: always
+    ports:
+      - '3308:3306'
+    environment:
+      - MYSQL_DATABASE=stuff
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=password
+    build: ./build/mysql/ #this is pointing to my Dockerfile
+    volumes:
+      - database_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+
+  backendservice:
+    container_name: 'backendservice'
+    image: ${DOCKER_REGISTRY-}backendservice
+    build:
+      context: .
+      dockerfile: BackendService/Dockerfile
+    depends_on:
+       - db
+    ports:
+    - "4201:80"
+    - "4201:443" 
+
+volumes:
+  database_data:
+    driver: local
+
+
