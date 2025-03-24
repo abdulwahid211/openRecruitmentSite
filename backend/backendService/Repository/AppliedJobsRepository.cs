@@ -28,7 +28,7 @@ namespace BackendService.Repository
             {
                 await _dbContext.AppliedJobs.AddAsync(job);
                 int result = await SaveAsync();
-                await SubmitRecivedEmail(job.ApplicantID);
+                //await SubmitRecivedEmail(job.ApplicantID);
                 return result != 0;
             }
             return false;

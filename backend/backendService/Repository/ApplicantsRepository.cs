@@ -28,7 +28,7 @@ namespace BackendService.Repository
                 var hashPassword = PasswordUtil.HashPassword(applicant.Password);
                 applicant.Password = hashPassword;
                 await _dbContext.Applicants.AddAsync(applicant);
-                await SubmitWelcomeEmail(applicant);
+                //await SubmitWelcomeEmail(applicant);
                 int result = await SaveAsync();
 
                 return result != 0;
