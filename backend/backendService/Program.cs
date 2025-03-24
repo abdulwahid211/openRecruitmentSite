@@ -14,6 +14,14 @@ using VacanciesService.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile($"appsettings.json", optional: true)
+    .AddJsonFile($"appsettings.{environmentName}.json", optional: true)
+    .Build();
+
 // add db connections 
 var dbConnectionString = builder.Configuration.GetConnectionString("mysql");
 
@@ -75,18 +83,12 @@ builder.Services.AddScoped<ICVRepository, CVRepository>();
 builder.Services.AddScoped<IMailService, MailService>();
 builder.Services
 .AddHttpContextAccessor()
-    .AddGraphQLServer().AllowIntrospection(false)
+    .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
     .AddFiltering();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (IsDevelopment)
-{
-
-}
 
 if (useCors)
 {
@@ -101,7 +103,7 @@ app.UseAuthorization();
 app.MapGraphQL(path: "/graphql").WithOptions(new GraphQLServerOptions()
 {
     //Disable GraphQL IDE outside dev
-    Tool = { Enable = false }
+    Tool = { Enable = environmentName == "Development" }
 });
 
 app.Run();
