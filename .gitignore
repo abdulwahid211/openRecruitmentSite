@@ -134,3 +134,75 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bin/
+obj/
+
+# Visual Studio files
+.vscode/
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs and database
+*.log
+*.sql
+*.sqlite
+
+# NuGet Packages
+*.nupkg
+packages/
+
+# Resharper
+*_Resharper.*
+*.DotSettings.user
+
+# Entity Framework
+*.edmx.diagram
+
+# ASP.NET
+*.publish.xml
+
+# Other
+*.cache
+*.pdb
+
+# Environment files
+.env
+.env.*
+
+# Rider
+.idea/
+*.sln.iml
+
+# JetBrains Rider Workspace
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
+# Misc
+*.bak
+*.swp
+*.tmp
+
+# Optional: Uncomment if using Azure DevOps
+# .vscode-test/
+# .azure-pipelines/
+
+# Optional: Uncomment if using Docker
+# Dockerfile
+# docker-compose.yml
