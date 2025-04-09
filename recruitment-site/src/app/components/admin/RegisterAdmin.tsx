@@ -1,5 +1,8 @@
 'use client';
+import { CREATE_ADMIN_PROFILE } from '../../graphql/graphql.queries';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
+import { redirect } from 'next/navigation';
 
 const RegisterAdmin = () => {
   const [email, setEmail] = useState('');
@@ -10,21 +13,29 @@ const RegisterAdmin = () => {
   const [registerError, setRegisterError] = useState(false);
   const [formSuccessful, setFormSuccessful] = useState(false);
 
-  const onClickSubmit = (e) => {
+  const [createAdmin, { loading, error, data }] = useMutation(CREATE_ADMIN_PROFILE);
+
+  const onClickSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!email || !password || !firstname || !lastname) {
       setValidation(true);
       return;
     }
 
-    // Add logic for form submission, e.g., API call
-    // If submission is successful:
+    await createAdmin({ variables: { email: email, password: password, firstName: firstname, lastName: lastname } });
+
     setFormSuccessful(true);
     setValidation(false);
     setRegisterError(false);
-
-    // If error occurs:
-    // setRegisterError(true);
+    console.log(data);
+    console.log(loading);
+    console.log(error);
+    if (!loading) {
+      redirect(`/`); // Navigate to the new post page
+    }
+    if (error) {
+      setRegisterError(true);
+    }
   };
 
   return (

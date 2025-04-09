@@ -9,20 +9,24 @@ const uri = 'https://localhost:7242/graphql/';
 const authLink = new ApolloLink((operation, forward) => {
   // Get token from localStorage (or wherever you're storing it)
   const token = typeof window !== 'undefined' ? localStorage.getItem(AUTH_TOKEN) : null;
-
+  console.log(token, 'token outcome');
   // Set the Authorization header
   operation.setContext({
     headers: {
-      authorization: token ? `Bearer ${token}` : '',
+      Authorization: token ? `${token}` : '',
     },
   });
-
+  console.log(operation, 'operation outcome');
   return forward(operation);
 });
 
 const client = new ApolloClient({
   link: authLink.concat(new HttpLink({ uri: uri })),
   cache: new InMemoryCache(),
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+  },
 });
 
 export default client;
