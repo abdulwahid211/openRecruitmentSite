@@ -1,23 +1,44 @@
 'use client';
-import React, { useState } from 'react';
+import { CREATE_VACANCY_PROFILE } from '@/app/graphql/graphql.queries';
+import { useMutation } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import DropDownSectors from '../dropdown/DropDownSectors';
 
 const RegisterVacancy = () => {
-  const [employerId, setEmployerId] = useState('');
+  const [employerId, setEmployerId] = useState<number>();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [salary, setSalary] = useState<number | null>(null);
+  const [salary, setSalary] = useState<string>('');
   const [location, setLocation] = useState('');
+  const [selectedSector, setSelectedSector] = useState('Select Sector');
   const [contract, setContract] = useState('');
   const [validation, setValidation] = useState(false);
   const [postError, setPostError] = useState(false);
   const [formSuccessful, setFormSuccessful] = useState(false);
+  const [dateTime, setDateTime] = useState(new Date());
 
-  const onClickSubmit = (e: { preventDefault: () => void }) => {
+  const [createVacancy, { loading, error, data }] = useMutation(CREATE_VACANCY_PROFILE);
+
+  const onClickSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!employerId || !title || !description || salary === null || !location || !contract) {
+    if (employerId === null || !title || !description || salary === null || !location || !contract) {
       setValidation(true);
       return;
     }
+
+    // Call the mutation to create a vacancy
+    await createVacancy({
+      variables: {
+        employerId: employerId,
+        title: title,
+        description: description,
+        salary: salary,
+        location: location,
+        contract: contract,
+        sector: selectedSector,
+        created: dateTime.getUTCDate() + '/' + (dateTime.getUTCMonth() + 1) + '/' + dateTime.getUTCFullYear(),
+      },
+    });
 
     // Add logic for form submission, e.g., API call to post the vacancy
     // If submission is successful:
@@ -25,10 +46,13 @@ const RegisterVacancy = () => {
     setValidation(false);
     setPostError(false);
 
+    if (error) {
+      setPostError(true);
+    }
+
     // If error occurs:
     // setPostError(true);
   };
-
   return (
     <div className="postVacancyTitle text-center py-8">
       <h2 className="text-4xl font-semibold">Post a New Vacancy</h2>
@@ -39,12 +63,12 @@ const RegisterVacancy = () => {
           {formSuccessful && <p className="text-green-500 text-center mb-4">Vacancy has been successfully posted!</p>}
 
           <input
-            type="text"
+            type="number"
             id="employerId"
             name="employerId"
             placeholder="Employer ID"
             value={employerId}
-            onChange={(e) => setEmployerId(e.target.value)}
+            onChange={(e) => setEmployerId(parseInt(e.target.value))}
             required
             className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -68,17 +92,14 @@ const RegisterVacancy = () => {
             className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             rows={4}
           />
+          <DropDownSectors selected={selectedSector} setSelected={setSelectedSector} />
           <input
-            type="number"
+            type="text"
             id="salary"
             name="salary"
             placeholder="Salary"
             value={salary || ''}
-            onChange={(e) => {
-              const value = e.target.value;
-              const parsedValue = value === '' ? null : parseInt(value, 10);
-              setSalary(parsedValue);
-            }}
+            onChange={(e) => setSalary(e.target.value)}
             required
             className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />

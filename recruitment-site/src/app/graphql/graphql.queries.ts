@@ -164,7 +164,7 @@ export const GET_ALL_ADMINS = gql`
   }
 `;
 
-export const DELETE_ALL_ADMIN = gql`
+export const DELETE_ADMIN = gql`
   mutation DeleteAdmin($email: String!) {
     deleteAdmin(email: $email)
   }

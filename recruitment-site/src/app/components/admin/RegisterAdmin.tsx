@@ -27,9 +27,6 @@ const RegisterAdmin = () => {
     setFormSuccessful(true);
     setValidation(false);
     setRegisterError(false);
-    console.log(data);
-    console.log(loading);
-    console.log(error);
     if (!loading) {
       redirect(`/`); // Navigate to the new post page
     }

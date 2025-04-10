@@ -68,7 +68,7 @@ export default function MenuBar() {
           {adminsLogin && (
             <>
               <li>
-                <a href="/admin" className="text-gray-700 hover:text-black">
+                <a href="/allApplicants" className="text-gray-700 hover:text-black">
                   All Applicants
                 </a>
               </li>
@@ -80,11 +80,6 @@ export default function MenuBar() {
               <li>
                 <a href="/allAdmins" className="text-gray-700 hover:text-black">
                   All Admins
-                </a>
-              </li>
-              <li>
-                <a href="/allVacancies" className="text-gray-700 hover:text-black">
-                  All Vacancies
                 </a>
               </li>
               <li>

@@ -7,7 +7,6 @@ const uri = 'https://localhost:7242/graphql/';
 
 // Middleware to attach the token to headers
 const authLink = new ApolloLink((operation, forward) => {
-  // Get token from localStorage (or wherever you're storing it)
   const token = typeof window !== 'undefined' ? localStorage.getItem(AUTH_TOKEN) : null;
   console.log(token, 'token outcome');
   // Set the Authorization header

@@ -1,4 +1,6 @@
 'use client';
+import { CREATE_EMPLOYER_PROFILE } from '@/app/graphql/graphql.queries';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 
 const RegisterEmployer = () => {
@@ -12,7 +14,9 @@ const RegisterEmployer = () => {
   const [registerError, setRegisterError] = useState(false);
   const [formSuccessful, setFormSuccessful] = useState(false);
 
-  const onClickSubmit = (e) => {
+  const [createEmployer, { loading, error, data }] = useMutation(CREATE_EMPLOYER_PROFILE);
+
+  const onClickSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!name || !email || !address || !city || !postcode || !telephone) {
       setValidation(true);
@@ -24,6 +28,12 @@ const RegisterEmployer = () => {
     setFormSuccessful(true);
     setValidation(false);
     setRegisterError(false);
+
+    await createEmployer({ variables: { name: name, email: email, address: address, city: city, postcode: postcode, telephone: telephone } });
+
+    if (error) {
+      setRegisterError(true);
+    }
 
     // If error occurs:
     // setRegisterError(true);
