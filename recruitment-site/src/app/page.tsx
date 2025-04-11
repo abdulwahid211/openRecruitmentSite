@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import MenuBar from './components/MenuBar';
-import { DialogProvider } from './context/DialogProvider';
+import MenuBar from './../../components/MenuBar';
+import { DialogProvider } from '../../context/DialogProvider';
 
 export default function Home() {
   return (

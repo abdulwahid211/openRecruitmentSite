@@ -1,4 +1,3 @@
-// lib/apolloClient.js
 import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from '@apollo/client';
 import { cache } from 'react';
 import { AUTH_TOKEN } from './constants';

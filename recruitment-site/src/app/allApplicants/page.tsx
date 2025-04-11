@@ -1,33 +1,41 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { RevoGrid, Template } from '@revolist/react-datagrid'; // Removed unused Template import
-import { DELETE_ADMIN, DELETE_APPLICANT, DELETE_EMPLOYER, DOWNLOAD_CV, GET_ALL_APPLICANTS } from '../graphql/graphql.queries';
-import { useMutation, useQuery } from '@apollo/client';
-import RemoveCellButton from '../components/gridButtons/RemoveCellButton';
-import { DialogProvider } from '../context/DialogProvider';
-import MenuBar from '../components/MenuBar';
-import { Applicant } from '../models/Applicant';
-import DownloadCellButton from '../components/gridButtons/DownloadCellButton';
+import { DELETE_ADMIN, DELETE_APPLICANT, DELETE_EMPLOYER, DOWNLOAD_CV, GET_ALL_APPLICANTS } from '../../../libs/graphql/graphql.queries';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import RemoveCellButton from '../../../components/gridButtons/RemoveCellButton';
+import { DialogProvider } from '../../../context/DialogProvider';
+import MenuBar from '../../../components/MenuBar';
+import { Applicant } from '../../../models/Applicant';
+import DownloadCellButton from '../../../components/gridButtons/DownloadCellButton';
+import { DownloadCVFile } from '../../../libs/utils/cvFileTools';
+import { CV } from '../../../models/CV';
 
 export default function Page() {
   // Capitalized component name
   const { loading, error, data } = useQuery(GET_ALL_APPLICANTS);
-  const { loading: loadingCV, error: errorData, data: dataCV } = useQuery(DOWNLOAD_CV);
+  const [downloadCv, { loading: loadingCV, error: errorData, data: dataCV }] = useLazyQuery(DOWNLOAD_CV);
   const [deleteApplicantMutation] = useMutation(DELETE_APPLICANT, {
     refetchQueries: [{ query: GET_ALL_APPLICANTS }],
   });
   const [applicants, setApplicants] = useState<Applicant[]>([]); // Fixed typo in variable name
 
-  const handleDelete = async (applicant: Applicant) => {
+  const handleDownload = async (applicant: Applicant) => {
     try {
-      await deleteApplicantMutation({ variables: { email: applicant.email } });
+      const result = await downloadCv({ variables: { email: applicant.email } });
+      if (result.data?.downloadCV) {
+        const cvData: CV = result.data.downloadCV;
+        console.log(cvData);
+        DownloadCVFile(cvData);
+      }
     } catch (error) {
       console.error('Error deleting applicant:', error);
     }
   };
 
-  const handleDownload = async (applicant: Applicant) => {
+  const handleDelete = async (applicant: Applicant) => {
     try {
+      console.log(applicant);
       await deleteApplicantMutation({ variables: { email: applicant.email } });
     } catch (error) {
       console.error('Error deleting applicant:', error);
@@ -75,7 +83,7 @@ export default function Page() {
       name: 'Download',
       size: 100,
       sortable: false,
-      cellTemplate: Template((props: any) => <DownloadCellButton column={props.column} handleClick={() => handleDelete(props.model)} />),
+      cellTemplate: Template((props: any) => <DownloadCellButton column={props.column} handleClick={() => handleDownload(props.model)} />),
     },
     {
       name: 'Remove',

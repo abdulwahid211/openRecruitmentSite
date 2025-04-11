@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { RevoGrid, Template } from '@revolist/react-datagrid'; // Removed unused Template import
-import { DELETE_EMPLOYER, GET_ALL_EMPLOYERS } from '../graphql/graphql.queries';
+import { DELETE_EMPLOYER, GET_ALL_EMPLOYERS } from '../../../libs/graphql/graphql.queries';
 import { useMutation, useQuery } from '@apollo/client';
-import { Employer } from '../models/employer';
-import RemoveCellButton from '../components/gridButtons/RemoveCellButton';
-import { DialogProvider } from '../context/DialogProvider';
-import MenuBar from '../components/MenuBar';
+import { Employer } from '../../../models/Employer';
+import RemoveCellButton from '../../../components/gridButtons/RemoveCellButton';
+import { DialogProvider } from '../../../context/DialogProvider';
+import MenuBar from '../../../components/MenuBar';
 
 export default function Page() {
   // Capitalized component name

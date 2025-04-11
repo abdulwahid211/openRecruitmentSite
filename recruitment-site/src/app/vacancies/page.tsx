@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import MenuBar from '../components/MenuBar';
-import { DialogProvider } from '../context/DialogProvider';
+import MenuBar from '../../../components/MenuBar';
+import { DialogProvider } from '../../../context/DialogProvider';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_APPLICANTS, GET_VACANCIES } from '../graphql/graphql.queries';
-import { Vacancy } from '../models/Vacancy';
-import VacancyCard from '../components/vacancy/VacancyCard';
+import { GET_ALL_APPLICANTS, GET_VACANCIES } from '../../../libs/graphql/graphql.queries';
+import { Vacancy } from '../../../models/Vacancy';
+import VacancyCard from '../../../components/vacancy/VacancyCard';
 
 export default function page() {
   const { loading, error, data } = useQuery(GET_VACANCIES);

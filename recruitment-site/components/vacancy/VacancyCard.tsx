@@ -1,4 +1,4 @@
-import { Vacancy } from '@/app/models/Vacancy';
+import { Vacancy } from '../../models/Vacancy';
 import React from 'react';
 import { RiMoneyPoundCircleFill } from 'react-icons/ri';
 import { FaLocationDot } from 'react-icons/fa6';

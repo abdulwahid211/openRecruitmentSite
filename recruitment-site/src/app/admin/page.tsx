@@ -1,16 +1,11 @@
 'use client';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import React, { useState } from 'react';
-import { ADMIN_LOGIN } from '../graphql/graphql.queries';
-import { ADMIN_ID, ADMIN_LOGIN_ENABLED, AUTH_TOKEN } from '../graphql/constants';
+import { ADMIN_LOGIN } from '../../../libs/graphql/graphql.queries';
+import { ADMIN_ID, ADMIN_LOGIN_ENABLED, AUTH_TOKEN } from '../../../libs/graphql/constants';
 import { redirect, useRouter } from 'next/navigation';
 
-const a = {
-  email: 'root@gmail.com',
-  password: 'password',
-};
-
-export default function AdminPage() {
+export default function page() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

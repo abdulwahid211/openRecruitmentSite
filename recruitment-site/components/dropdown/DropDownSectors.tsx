@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
 import { Button } from '@headlessui/react';
 
-// ✅ DropDownSectors.tsx
 export interface DropDownSectorsProps {
   selected: string;
   setSelected: (value: string) => void;
