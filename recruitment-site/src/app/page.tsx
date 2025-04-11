@@ -36,8 +36,8 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-black/50 z-0"></div> {/* Optional: dark overlay for contrast */}
           <div className="relative z-0 flex flex-col items-center">
-            <img src="/assets/logobannerwhite.png" alt="Logo" className="w-1/3 md:w-1/2 sm:w-3/4 mb-10" />
-            <h2 className="text-white text-[3.5vw] sm:text-[6vw] font-bold text-center leading-tight">• Inspire • Grow • Lead</h2>
+            <img src="/assets/logobannerwhite.png" alt="Logo" className="w-1/4 md:w-1/2 sm:w-3/4 mb-10" />
+            <h2 className="text-white text-[3vw] sm:text-[6vw] font-bold text-center leading-tight">• Inspire • Grow • Lead</h2>
           </div>
         </div>
       </div>

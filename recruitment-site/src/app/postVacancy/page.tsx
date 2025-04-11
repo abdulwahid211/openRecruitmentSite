@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'; // Ensure React is imported 
 import { DialogProvider } from '../../../context/DialogProvider';
 import NavBar from '../../../components/nav/NavBar';
 import { ADMIN_LOGIN_ENABLED } from '../../../libs/graphql/constants';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { CREATE_VACANCY_PROFILE } from '../../../libs/graphql/graphql.queries';
 import { useMutation } from '@apollo/client';
 import DropDownSectors from '../../../components/dropdown/DropDownSectors';
