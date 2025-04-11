@@ -47,7 +47,7 @@ export default function SignUpDialog() {
   return (
     <Transition show={dialogOpen}>
       <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <DialogPanel className="fixed inset-0 bg-[#efedeb] transition duration-300 ease-in-out rounded-lg shadow-lg xl:ml-60 xl:mr-60 mt-20 mb-40 mx-auto py-6">
+        <DialogPanel className="fixed inset-0 bg-[#efedeb] bg-opacity-50 z-11 transition duration-300 ease-in-out rounded-lg shadow-lg xl:ml-60 xl:mr-60 mt-20 mb-40 mx-auto py-6">
           <div className="flex flex-col  items-center space-y-4 p-6">
             <DialogTitle className="text-3xl font-bold">Your Account</DialogTitle>
             <Input
@@ -78,7 +78,7 @@ export default function SignUpDialog() {
             <p> Don't have an account with us</p>
             <button
               onClick={() => {
-                redirect(`/register`); // Navigate to the new post page
+                redirect(`/register`);
               }}
               className="bg-[#e0bc91] shadow-md text-white text-lg font-bold py-3 px-11 rounded-lg hover:bg-[#bda88f] hover:text-[#004d90]"
             >
