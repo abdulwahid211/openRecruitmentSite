@@ -5,7 +5,7 @@ import { DELETE_ADMIN, DELETE_APPLICANT, DELETE_EMPLOYER, DOWNLOAD_CV, GET_ALL_A
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import RemoveCellButton from '../../../components/gridButtons/RemoveCellButton';
 import { DialogProvider } from '../../../context/DialogProvider';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 import { Applicant } from '../../../models/Applicant';
 import DownloadCellButton from '../../../components/gridButtons/DownloadCellButton';
 import { DownloadCVFile } from '../../../libs/utils/cvFileTools';
@@ -103,7 +103,7 @@ export default function Page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <div className="p-2 max-w-full overflow-x-auto">
         <RevoGrid

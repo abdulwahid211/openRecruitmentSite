@@ -3,7 +3,7 @@ import { CREATE_APPLICANT_PROFILE, UPLOAD_CV } from '../../../libs/graphql/graph
 import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
 import { DialogProvider } from '../../../context/DialogProvider';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 import convertFileToBase64 from '../../../libs/utils/uploadFile';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -89,7 +89,7 @@ export default function page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <h2 className="text-3xl font-semibold flex items-baseline justify-center p-4">Register as an Applicant</h2>
       <div className="registerApplicantTitle text-center py-8 flex sm:flex-row-reverse m-4 items-center justify-center flex-col">

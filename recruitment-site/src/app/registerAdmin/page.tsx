@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { DialogProvider } from '../../../context/DialogProvider';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 import { ADMIN_LOGIN_ENABLED } from '../../../libs/graphql/constants';
 import { redirect, useRouter } from 'next/navigation';
 import { useMutation } from '@apollo/client';
@@ -50,7 +50,7 @@ export default function page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <div className="registerAdminTitle text-center py-8">
         <h2 className="text-4xl font-semibold">Register an Admin</h2>

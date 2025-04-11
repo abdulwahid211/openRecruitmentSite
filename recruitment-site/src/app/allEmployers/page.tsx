@@ -6,7 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { Employer } from '../../../models/Employer';
 import RemoveCellButton from '../../../components/gridButtons/RemoveCellButton';
 import { DialogProvider } from '../../../context/DialogProvider';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 
 export default function Page() {
   // Capitalized component name
@@ -60,7 +60,7 @@ export default function Page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <div className="p-4 max-w-full overflow-x-auto">
         <RevoGrid

@@ -5,7 +5,7 @@ import { DELETE_ADMIN, GET_ALL_ADMINS } from '../../../libs/graphql/graphql.quer
 import { useMutation, useQuery } from '@apollo/client';
 import RemoveCellButton from '../../../components/gridButtons/RemoveCellButton';
 import { DialogProvider } from '../../../context/DialogProvider';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 import { Admin } from '../../../models/Admin';
 
 export default function Page() {
@@ -67,7 +67,7 @@ export default function Page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <div className="p-4 max-w-full overflow-x-auto">
         <RevoGrid

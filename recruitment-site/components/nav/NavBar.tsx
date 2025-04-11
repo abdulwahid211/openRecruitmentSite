@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import logo from '../public/assets/logo.png';
-import SignUpDialog from './SignUpDialog';
-import { useDialog } from '../context/DialogContext';
-import { ADMIN_ID, ADMIN_LOGIN_ENABLED, APPLICANT_ID, APPLICANT_LOGIN_ENABLED, AUTH_TOKEN } from '../libs/graphql/constants';
+import logo from '../../public/assets/logo.png';
+import SignUpDialog from '../SignUpDialog';
+import { useDialog } from '../../context/DialogContext';
+import { ADMIN_ID, ADMIN_LOGIN_ENABLED, APPLICANT_ID, APPLICANT_LOGIN_ENABLED, AUTH_TOKEN } from '../../libs/graphql/constants';
 import { useRouter } from 'next/navigation';
 
-export default function MenuBar() {
+export default function NavBar() {
   let { dialogOpen, setDialogOpen } = useDialog();
   const [adminsLogin, setAdminsLogin] = useState(false);
   const [applicantLogin, setApplicantLogin] = useState(false);

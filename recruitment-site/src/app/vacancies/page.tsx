@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import MenuBar from '../../../components/MenuBar';
+import NavBar from '../../../components/nav/NavBar';
 import { DialogProvider } from '../../../context/DialogProvider';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_APPLICANTS, GET_VACANCIES } from '../../../libs/graphql/graphql.queries';
@@ -21,7 +21,7 @@ export default function page() {
   return (
     <div>
       <DialogProvider>
-        <MenuBar />
+        <NavBar />
       </DialogProvider>
       <ul className="flex flex-col xl:flex-row">
         {loading ? (
