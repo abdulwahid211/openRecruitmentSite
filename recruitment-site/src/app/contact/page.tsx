@@ -61,8 +61,13 @@ export default function page() {
             </ul>
           </div>
         </div>
-
-        <footer className="mt-12 text-center text-gray-500">© {new Date().getFullYear()} LandSeaStaffing Ltd. All rights reserved.</footer>
+        <footer className="text-center py-6 text-sm text-gray-500">
+          &copy; {new Date().getFullYear()}{' '}
+          <a href="https://abdulwahid.uk" className="hover:underline hover:text-white transition">
+            abdulwahid.uk
+          </a>
+          . All rights reserved.
+        </footer>
       </div>
     </div>
   );
