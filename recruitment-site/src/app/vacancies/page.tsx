@@ -23,7 +23,7 @@ export default function page() {
       <DialogProvider>
         <NavBar />
       </DialogProvider>
-      <ul className="flex flex-col xl:flex-row">
+      <ul className="flex flex-col items-center justify-center xl:flex-row xl:space-x-4 space-y-2 xl:space-y-0 ">
         {loading ? (
           <div>Loading...</div>
         ) : (

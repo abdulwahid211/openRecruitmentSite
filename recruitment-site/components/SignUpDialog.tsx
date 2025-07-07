@@ -46,8 +46,8 @@ export default function SignUpDialog() {
 
   return (
     <Transition show={dialogOpen}>
-      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <DialogPanel className="fixed inset-0 bg-[#efedeb] bg-opacity-50 z-11 transition duration-300 ease-in-out rounded-lg shadow-lg xl:ml-60 xl:mr-60 mt-20 mb-40 mx-auto py-6">
+      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} className="absolute flex flex-col items-center justify-center z-50 inset-0">
+        <DialogPanel className="bg-[#efedeb] bg-opacity-10 z-11 transition duration-300 ease-in-out rounded-lg shadow-2xl w-full max-w-md mx-auto p-6">
           <div className="flex flex-col  items-center space-y-4 p-6">
             <DialogTitle className="text-3xl font-bold">Your Account</DialogTitle>
             <Input
