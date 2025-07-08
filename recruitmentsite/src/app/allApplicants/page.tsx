@@ -80,16 +80,42 @@ export default function Page() {
       size: 200,
     },
     {
+      prop: 'download',
       name: 'Download',
       size: 100,
       sortable: false,
-      cellTemplate: Template((props: any) => <DownloadCellButton column={props.column} handleClick={() => handleDownload(props.model)} />),
+      cellTemplate: Template((props: any) => (
+        <DownloadCellButton
+          column={props.column}
+          handleClick={() => handleDownload(props.model)}
+          prop={''}
+          model={props.model}
+          rowIndex={0}
+          colIndex={0}
+          colType={'colPinStart'}
+          type={'rgRow'}
+          data={[]}
+        />
+      )),
     },
     {
+      prop: 'remove',
       name: 'Remove',
       size: 100,
       sortable: false,
-      cellTemplate: Template((props: any) => <RemoveCellButton column={props.column} handleClick={() => handleDelete(props.model)} />),
+      cellTemplate: Template((props: any) => (
+        <RemoveCellButton
+          column={props.column}
+          handleClick={() => handleDelete(props.model)}
+          prop={''}
+          model={props.model}
+          rowIndex={0}
+          colIndex={0}
+          colType={'colPinStart'}
+          type={'rgRow'}
+          data={[]}
+        />
+      )),
     },
   ];
 

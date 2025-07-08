@@ -22,7 +22,7 @@ export default function NavBar() {
     localStorage.removeItem(ADMIN_ID);
     localStorage.removeItem(AUTH_TOKEN);
     setAdminsLogin(false);
-    router.push('/'); // Redirect to the dashboard after successful login
+    router.push('/landsea'); // Redirect to the dashboard after successful login
     window.location.reload();
   };
 
@@ -31,7 +31,7 @@ export default function NavBar() {
     localStorage.removeItem(APPLICANT_ID);
     localStorage.removeItem(AUTH_TOKEN);
     setAdminsLogin(false);
-    router.push('/'); // Redirect to the dashboard after successful login
+    router.push('/landsea'); // Redirect to the dashboard after successful login
     window.location.reload();
   };
 
@@ -54,14 +54,14 @@ export default function NavBar() {
     <>
       <SignUpDialog />
       <nav className="flex flex-row place-content-between bg-[#fff9f1] p-4 shadow-md font-bold text-l ">
-        <a href="/">
+        <a href="/landsea">
           <img src={logo.src} alt="Logo" className="h-auto w-60" />
         </a>
         <ul className="flex space-x-6 list-none pt-5 pr-7">
           {!adminsLogin && (
             <>
               <li>
-                <a href="/" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea" className="text-[#004d90] hover:text-emerald-500">
                   Home
                 </a>
               </li>
@@ -73,12 +73,12 @@ export default function NavBar() {
                 </li>
               )}
               <li>
-                <a href="/vacancies" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/vacancies" className="text-[#004d90] hover:text-emerald-500">
                   Vacancies
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/contact" className="text-[#004d90] hover:text-emerald-500">
                   Contact Us
                 </a>
               </li>
@@ -94,32 +94,32 @@ export default function NavBar() {
           {adminsLogin && (
             <>
               <li>
-                <a href="/allApplicants" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/allApplicants" className="text-[#004d90] hover:text-emerald-500">
                   All Applicants
                 </a>
               </li>
               <li>
-                <a href="/allEmployers" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/allEmployers" className="text-[#004d90] hover:text-emerald-500">
                   All Employers
                 </a>
               </li>
               <li>
-                <a href="/allAdmins" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/allAdmins" className="text-[#004d90] hover:text-emerald-500">
                   All Admins
                 </a>
               </li>
               <li>
-                <a href="/registerEmployer" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/registerEmployer" className="text-[#004d90] hover:text-emerald-500">
                   Register an Employer
                 </a>
               </li>
               <li>
-                <a href="/postVacancy" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/postVacancy" className="text-[#004d90] hover:text-emerald-500">
                   Post Vacancy
                 </a>
               </li>
               <li>
-                <a href="/registerAdmin" className="text-[#004d90] hover:text-emerald-500">
+                <a href="/landsea/registerAdmin" className="text-[#004d90] hover:text-emerald-500">
                   Register an Admin
                 </a>
               </li>

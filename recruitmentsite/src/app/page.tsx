@@ -6,11 +6,11 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const backgrounds: string[] = [
-    '/assets/slides/nurse.jpg',
-    '/assets/slides/office.jpg',
-    '/assets/slides/planning.jpg',
-    '/assets/slides/builders.jpg',
-    '/assets/slides/cooking.jpg',
+    '/landsea/assets/slides/nurse.jpg',
+    '/landsea/assets/slides/office.jpg',
+    '/landsea/assets/slides/planning.jpg',
+    '/landsea/assets/slides/builders.jpg',
+    '/landsea/assets/slides/cooking.jpg',
   ];
 
   const [currentBackground, setCurrentBackground] = useState<string>(backgrounds[0]);
@@ -36,7 +36,7 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-black/50 z-0"></div> {/* Optional: dark overlay for contrast */}
           <div className="relative z-0 flex flex-col items-center">
-            <img src="/assets/logobannerwhite.png" alt="Logo" className="w-1/4 md:w-1/2 sm:w-3/4 mb-10" />
+            <img src="/landsea/assets/logobannerwhite.png" alt="Logo" className="w-1/4 md:w-1/2 sm:w-3/4 mb-10" />
             <h2 className="text-white text-[3vw] sm:text-[6vw] font-bold text-center leading-tight">• Inspire • Grow • Lead</h2>
           </div>
         </div>
@@ -51,7 +51,7 @@ export default function Home() {
           experienced consultants can assist in all areas. When you use our services, you can be fully assured that you will be receiving a highly cost-effective solution to your
           staffing requirements.
         </p>
-        <a href="/register">
+        <a href="/landsea/register">
           <button className="bg-[#ffbb6d] hover:bg-[#a86f2e] text-[#004d90] hover:text-white font-extrabold py-4 px-10 text-xl rounded-xl transition-colors duration-300">
             Join Us
           </button>

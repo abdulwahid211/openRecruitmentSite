@@ -1,3 +1,5 @@
+import { CV } from '../../models/CV';
+
 export function DownloadCVFile(downloadCV: CV) {
   const fileBlob = DataURItoBlob(downloadCV.file, downloadCV.type);
   const url = window.URL.createObjectURL(fileBlob);

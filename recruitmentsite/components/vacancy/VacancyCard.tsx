@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 
 export default function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
-  const iconSrc = `/assets/icons/${vacancy.sector.replace(/\s/g, '')}.png`;
+  const iconSrc = `/landsea/assets/icons/${vacancy.sector.replace(/\s/g, '')}.png`;
   const router = useRouter();
 
   const goToVacancyProfile = () => {

@@ -44,10 +44,23 @@ export default function Page() {
       size: 200,
     },
     {
+      prop: 'remove', // Added a unique prop for the Remove column
       name: 'Remove',
       size: 100,
       sortable: false,
-      cellTemplate: Template((props: any) => <RemoveCellButton column={props.column} handleClick={() => handle(props.model)} />),
+      cellTemplate: Template((props: any) => (
+        <RemoveCellButton
+          prop={props.prop}
+          model={props.model}
+          rowIndex={props.rowIndex}
+          colIndex={props.colIndex}
+          column={props.column}
+          handleClick={() => handle(props.model)}
+          colType={'colPinStart'}
+          type={'rgRow'}
+          data={[]}
+        />
+      )),
     },
   ];
 

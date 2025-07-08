@@ -20,7 +20,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - '8087:8087'
-    networks:
-      - backendservice
     environment:
       - NODE_ENV=production
