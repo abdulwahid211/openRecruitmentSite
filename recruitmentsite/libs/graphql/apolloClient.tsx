@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from '@apollo/client';
 import { AUTH_TOKEN } from './constants';
 
-const uri = 'http://localhost:8085/graphql/';
+const uri = 'https://abdulwahid.uk/graphql/';
 
 // Middleware to attach the token to headers
 const authLink = new ApolloLink((operation, forward) => {
